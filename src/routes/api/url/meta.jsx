@@ -26,7 +26,9 @@ export const config = {
     ]
 }
 
-// const getQueryString = (url, name) => decodeuRIComponent((new RegEx('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exex(url) || [, ''])[1].replace(/\+/g, '%20')) || null
+export async function OPTIONS(context) {
+    return json(200)
+}
 
 
 export async function POST(context) {

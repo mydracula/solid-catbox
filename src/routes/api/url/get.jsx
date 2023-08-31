@@ -39,10 +39,11 @@ export async function POST(context) {
     formData.append('reqtype', 'fileupload');
     formData.append('userhash', '');
 
-    return fetch('https://catbox.moe/user/api.php', {
+    const data = await fetch('https://catbox.moe/user/api.php', {
         method: 'POST',
         body: formData
-    });
+    }).text();
 
+    return json(data)
 }
 

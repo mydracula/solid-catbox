@@ -37,7 +37,6 @@ export async function POST(context) {
     }
   )).text()
   return json(data)
-
   // return json('https://files.catbox.moe/p3v8rs.webp')
 }
 
