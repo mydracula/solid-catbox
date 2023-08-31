@@ -26,19 +26,16 @@ export const config = {
     ]
 }
 
-// const getQueryString = (url, name) => decodeuRIComponent((new RegEx('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exex(url) || [, ''])[1].replace(/\+/g, '%20')) || null
 
 
 export async function POST(context) {
     const body = await context.request.json()
     const { url } = body
     const file = await (await fetch(url)).blob()
-
     const formData = new FormData();
     formData.append('fileToUpload', file);
     formData.append('reqtype', 'fileupload');
     formData.append('userhash', '');
-
     const data = await (await fetch(`https://tuphp.hicks.workers.dev/`,
         {
             method: "POST",
