@@ -29,16 +29,13 @@ export const config = {
 
 
 export async function POST(context) {
-  // const body = await context.request.formData()
-  // const data = await (await fetch(`https://tuphp.hicks.workers.dev/`,
-  //   {
-  //     method: "POST",
-  //     body
-  //   }
-  // )).text()
-  // return json(data)
-  return json({
-    "url": "https://ik.imagekit.io/pshbwfiho/404_Xust2Ss2O.png",
-  })
+  const body = await context.request.formData()
+  const data = await (await fetch(`https://tuphp.hicks.workers.dev/`,
+    {
+      method: "POST",
+      body
+    }
+  )).text()
+  return json(data)
 }
 
