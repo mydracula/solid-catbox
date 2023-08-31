@@ -6,7 +6,7 @@ import ImageEditor from '@uppy/image-editor';
 import DropTarget from '@uppy/drop-target';
 // import RemoteSources from '@uppy/remote-sources';
 // import Url from '@uppy/url'
-import Chinese from '@uppy/locales/lib/zh_CN';
+import Chinese from '../utils/zh_cn.js';
 import XHR from '@uppy/xhr-upload';
 import ScreenCapture from '@uppy/screen-capture';
 import Webcam from '@uppy/webcam';
@@ -23,9 +23,20 @@ import { onMount } from "solid-js";
 
 export default function Home() {
   onMount(() => {
+    console.log(Chinese);
     const uppy = new Uppy({
       locale: Chinese,
       allowMultipleUploadBatches: true,
+      onBeforeFileAdded: (currentFile) => {
+        const isCorrectExtension = ['exe', 'scr', 'cpl', 'doc', 'jar'].includes(currentFile.extension)
+        if (isCorrectExtension) {
+          uppy.info(uppy.i18n('youCanNotOnlyUploadFileTypes', { types: '.exe、.scr、.cpl、.doc*、.jar' }), 'error', 5000)
+
+          return false
+        } else {
+          return true
+        }
+      }
     });
     uppy.setMeta({ reqtype: 'fileupload', userhash: '' })
     uppy.use(Dashboard, { showLinkToFileUploadResult: true, inline: true, target: '#uppy-dashboard', proudlyDisplayPoweredByUppy: false, width: '100%', height: '100%', showProgressDetails: true })

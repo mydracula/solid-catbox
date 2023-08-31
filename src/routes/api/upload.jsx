@@ -1,6 +1,4 @@
-import { APIEvent, json } from "solid-start/api";
-
-
+import { json } from "solid-start/api";
 
 export const config = {
   runtime: "edge",
@@ -26,7 +24,6 @@ export const config = {
     "syd1"
   ]
 }
-
 
 export async function POST(context) {
   const body = await context.request.formData()
