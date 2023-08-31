@@ -36,14 +36,18 @@ export async function POST(context) {
     formData.append('fileToUpload', file);
     formData.append('reqtype', 'fileupload');
     formData.append('userhash', '');
-    const data = await (await fetch(`https://tuphp.hicks.workers.dev/`,
-        {
-            method: "POST",
-            body: formData
-        }
-    )).text()
+    // const data = await (await fetch(`https://tuphp.hicks.workers.dev/`,
+    //     {
+    //         method: "POST",
+    //         body: formData
+    //     }
+    // )).text()
 
-    return json({ token: 'dd441a6e-7909-4b5b-8ae4-a7ba5430dd3f', url: data })
+    return json({
+        "status": 200, // HTTP status code (0, 200, 300)
+        "body": "…", // response body
+        "uploadURL": "…" // the file url, if it was returned
+    })
 
     return json('https://files.catbox.moe/p3v8rs.webp')
 

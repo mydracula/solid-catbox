@@ -2,18 +2,22 @@ import { Title } from "solid-start";
 import Clipboard from 'clipboard';
 import Uppy from '@uppy/core';
 import Dashboard from '@uppy/dashboard'
-import Informer from '@uppy/informer';
 import ImageEditor from '@uppy/image-editor';
 import DropTarget from '@uppy/drop-target';
-import RemoteSources from '@uppy/remote-sources';
+// import RemoteSources from '@uppy/remote-sources';
+// import Url from '@uppy/url'
 import Chinese from '@uppy/locales/lib/zh_CN';
 import XHR from '@uppy/xhr-upload';
 import ScreenCapture from '@uppy/screen-capture';
+import Webcam from '@uppy/webcam';
+import Audio from '@uppy/audio';
 
 import '@uppy/core/dist/style.min.css';
 import '@uppy/dashboard/dist/style.min.css';
 import '@uppy/image-editor/dist/style.min.css';
 import '@uppy/screen-capture/dist/style.min.css';
+import '@uppy/webcam/dist/style.min.css';
+import '@uppy/audio/dist/style.min.css';
 import { onMount } from "solid-js";
 
 
@@ -24,16 +28,12 @@ export default function Home() {
       allowMultipleUploadBatches: true,
     });
     uppy.setMeta({ reqtype: 'fileupload', userhash: '' })
-    uppy.use(Dashboard, { inline: true, target: '#uppy-dashboard', proudlyDisplayPoweredByUppy: false, width: '100%', height: '100%', showProgressDetails: true })
+    uppy.use(Dashboard, { showLinkToFileUploadResult: true, inline: true, target: '#uppy-dashboard', proudlyDisplayPoweredByUppy: false, width: '100%', height: '100%', showProgressDetails: true })
       .use(XHR, { endpoint: '/api/upload', fieldName: 'fileToUpload', allowedMetaFields: ['reqtype', 'userhash'] })
       .use(ScreenCapture, { target: Dashboard, preferredVideoMimeType: 'video/mp4' })
-      .use(RemoteSources, {
-        companionUrl: location.href + 'api',
-        sources: [
-          "Url",
-        ],
-      })
-      // .use(Informer, { target: '#informer' })
+      .use(Webcam, { target: Dashboard, preferredVideoMimeType: 'video/mp4', preferredImageMimeType: 'image/png', preferredVideoMimeType: 'video/mp4' })
+      .use(Audio, { target: Dashboard })
+      // .use(Url, { target: Dashboard, companionUrl: location.href + 'api' })
       .use(ImageEditor, { target: Dashboard })
       .use(DropTarget, {
         target: document.body,
@@ -46,16 +46,9 @@ export default function Home() {
         if (status == 200) {
           const el = document.getElementById(`${id.replace('-', '_uppy-')}`)
           new Clipboard(el);
-          el.setAttribute("data-clipboard-text", body);
-          // el.addEventListener("click", () => {
-          //   console.log(el);
-          // });
+          el.setAttribute("data-clipboard-text", body.url);
         }
       }
-    })
-
-    uppy.on('complete', (result) => {
-      console.log('Upload complete! We’ve uploaded these files:', result.successful)
     })
   })
 
