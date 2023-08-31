@@ -39,7 +39,7 @@ export async function POST(context) {
     formData.append('reqtype', 'fileupload');
     formData.append('userhash', '');
 
-    const data = await fetch('https://catbox.moe/user/api.php', {
+    const data = await fetch('https://tuphp.hicks.workers.dev', {
         method: 'POST',
         body: formData
     }).text();
