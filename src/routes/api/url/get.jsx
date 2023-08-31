@@ -43,6 +43,9 @@ export async function POST(context) {
         }
     )).text()
 
-    return json(data)
+    return json({ token: 'dd441a6e-7909-4b5b-8ae4-a7ba5430dd3f', url: data })
+
+    return json('https://files.catbox.moe/p3v8rs.webp')
+
 }
 

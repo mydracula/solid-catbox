@@ -26,7 +26,7 @@ export default function Home() {
     uppy.setMeta({ reqtype: 'fileupload', userhash: '' })
     uppy.use(Dashboard, { inline: true, target: '#uppy-dashboard', proudlyDisplayPoweredByUppy: false, width: '100%', height: '100%', showProgressDetails: true })
       .use(XHR, { endpoint: '/api/upload', fieldName: 'fileToUpload', allowedMetaFields: ['reqtype', 'userhash'] })
-      .use(ScreenCapture, { target: Dashboard })
+      .use(ScreenCapture, { target: Dashboard, preferredVideoMimeType: 'video/mp4' })
       .use(RemoteSources, {
         companionUrl: location.href + 'api',
         sources: [
