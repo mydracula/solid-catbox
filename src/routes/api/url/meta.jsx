@@ -26,9 +26,7 @@ export const config = {
     ]
 }
 
-export async function OPTIONS(context) {
-    return json(200)
-}
+
 
 
 export async function POST(context) {
