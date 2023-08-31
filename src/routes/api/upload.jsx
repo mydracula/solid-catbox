@@ -36,7 +36,7 @@ export async function POST(context) {
       body
     }
   )).text()
-  return json({ url: data })
+  return json({ url: data.replace('https://files.catbox.moe', 'https://catbox.reliedema.icu') })
   // return json({
   //   "url": "https://ik.imagekit.io/pshbwfiho/404_Xust2Ss2O.png",
   // })
