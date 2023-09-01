@@ -3,10 +3,6 @@
         {
             "src": "/i/(.*)",
             "dest": "https://files.catbox.moe/$1"
-        },
-        {
-            "src": "/dev/(.*)",
-            "dest": "https://catbox.moe/user/api.php"
         }
     ]
 }
