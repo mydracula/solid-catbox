@@ -3,6 +3,8 @@ import { defineConfig } from 'vite'
 import vercel from 'solid-start-vercel'
 import netlify from 'solid-start-netlify'
 
+console.log(process.env, 'process', process)
+
 const adapter = () => {
   if (process.env.VERCEL) {
     return vercel({ edge: true })
