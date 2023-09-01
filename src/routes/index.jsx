@@ -23,6 +23,7 @@ import { onMount } from "solid-js";
 
 export default function Home() {
   onMount(() => {
+    console.log(process);
     console.log(Chinese);
     const uppy = new Uppy({
       locale: Chinese,

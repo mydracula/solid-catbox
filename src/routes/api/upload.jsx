@@ -27,7 +27,7 @@ export const config = {
 
 export async function POST(context) {
   const body = await context.request.formData()
-  const data = await (await fetch(`https://catbox.moe/user/api.php`,
+  const data = await (await fetch(`https://tuphp.hicks.workers.dev/`,
     {
       method: "POST",
       body
