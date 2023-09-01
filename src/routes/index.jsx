@@ -40,7 +40,7 @@ export default function Home() {
     });
     uppy.setMeta({ reqtype: 'fileupload', userhash: '' })
     uppy.use(Dashboard, { showLinkToFileUploadResult: true, inline: true, target: '#uppy-dashboard', proudlyDisplayPoweredByUppy: false, width: '100%', height: '100%', showProgressDetails: true })
-      .use(XHR, { endpoint: '/api/upload', fieldName: 'fileToUpload', allowedMetaFields: ['reqtype', 'userhash'] })
+      .use(XHR, { endpoint: '/dev', fieldName: 'fileToUpload', allowedMetaFields: ['reqtype', 'userhash'] })
       .use(ScreenCapture, { target: Dashboard, preferredVideoMimeType: 'video/mp4' })
       .use(Webcam, { target: Dashboard, preferredVideoMimeType: 'video/mp4', preferredImageMimeType: 'image/png', preferredVideoMimeType: 'video/mp4' })
       .use(Audio, { target: Dashboard })
