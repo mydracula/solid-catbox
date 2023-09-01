@@ -30,6 +30,7 @@
     "clipboard": "^2.0.11",
     "solid-js": "^1.7.11",
     "solid-start": "^0.3.5",
+    "solid-start-netlify": "^0.3.5",
     "solid-start-vercel": "^0.3.5"
   },
   "engines": {
