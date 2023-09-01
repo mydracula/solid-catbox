@@ -3,3 +3,9 @@
 
 [build]
   command = "npm run build"
+
+[[redirects]]
+  from = "/i/*"
+  to = "https://files.catbox.moe/:splat"
+  status = 200
+  force = false
